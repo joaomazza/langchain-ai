@@ -31,7 +31,7 @@
 
 ### 🔹 1. Clonar o repositório
 ```bash
-    git clone https://github.com/seu-usuario/chatbot-fastapi.git
+    git clone https://github.com/joaomazza/langchain-ai
     cd chatbot-fastapi
 ```
 
