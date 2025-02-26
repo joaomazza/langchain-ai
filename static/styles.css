@@ -1,0 +1,80 @@
+:root {
+    --background: #282a36;
+    --foreground: #f8f8f2;
+    --primary: #bd93f9;
+    --secondary: #282a36;
+    --user-message: #44475a;
+    --bot-message: #50fa7b;
+    --error-message: #ff5555;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.chat-container {
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    border: 2px solid #26375e;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background);
+}
+
+.user-message {
+    background-color: var(--user-message);
+    color: var(--foreground);
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.bot-message {
+    background-color: var(--bot-message);
+    color: var(--background);
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.input-group input {
+    background-color: var(--user-message);
+    color: var(--foreground);
+    border: 1px solid var(--primary);
+}
+
+.input-group input::placeholder {
+    color: var(--secondary);
+}
+
+.input-group button {
+    background-color: var(--primary);
+    border: none;
+    color: var(--background);
+}
+
+.input-group button:hover {
+    background-color: #8a63d2;
+}
+
+.text-danger {
+    color: var(--error-message) !important;
+}
+
+.loading {
+    display: none;
+    color: var(--secondary);
+}
