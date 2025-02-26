@@ -11,3 +11,7 @@ uvicorn
 python-multipart
 jinja2
 starlette
+docling[all]
+pypdf
+pandas
+openpyxl

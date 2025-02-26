@@ -1,0 +1,3 @@
+LangChain é um framework para criação de aplicações que utilizam LLMs. Ele permite integrar IA com fontes de dados externas para criar respostas mais ricas.
+FAISS é um banco vetorial de alta performance que permite busca eficiente em grandes bases de dados.
+Retrieval-Augmented Generation (RAG) é uma técnica que melhora respostas de IA ao buscar informações relevantes antes da geração.
