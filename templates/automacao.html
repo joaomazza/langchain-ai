@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}Automação de Processos{% endblock %}
+    
+{% block content %}
+    <div class="container-fluid py-5">
+        <div class="container">
+            <h1 class="text-center mb-4">Automação de Processos</h1>
+            <p class="text-center">Envie seus arquivos para extração de dados, resumo e geração de relatórios automaticamente.</p>
+            
+            <div class="card bg-secondary p-4">
+                <form action="/automacao/automate/" method="post" enctype="multipart/form-data" id="upload-form">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Escolha um arquivo (PDF, DOCX, XLSX, CSV)</label>
+                        <input class="form-control" type="file" name="file" id="file" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" id="upload-btn">Enviar e Processar</button>
+                </form>
+            </div>
+            
+            <div id="loading" class="text-center mt-4" style="display: none;">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Processando...</span>
+                </div>
+                <p>Processando arquivo, aguarde...</p>
+            </div>
+
+            <div class="mt-4" id="result" style="display: none;">
+                <h3>📄 Resumo do Conteúdo</h3>
+                <p id="summary" class="bg-light text-dark p-3 rounded"></p>
+                <a href="/output/relatorio_automatizado.docx" class="btn btn-success" download>📥 Baixar Relatório</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("upload-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("result").style.display = "none";
+            
+            fetch("/automate/", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("loading").style.display = "none";
+                if (data.summary) {
+                    document.getElementById("summary").innerText = data.summary;
+                    document.getElementById("result").style.display = "block";
+                }
+            })
+            .catch(error => {
+                document.getElementById("loading").style.display = "none";
+                alert("Erro ao processar o arquivo. Tente novamente.");
+            });
+        });
+    </script>
+{% endblock %}
